@@ -1,0 +1,20 @@
+# Core (required) — everything needed for the default offline pipeline
+numpy
+scikit-learn
+pypdf
+
+# Optional — enable with --embedder sentence-transformer
+# sentence-transformers
+
+# Optional — enable with --generator huggingface
+# transformers
+# torch
+
+# Optional — enable with --generator anthropic
+# anthropic
+
+# Optional — enable with --vector-store faiss
+# faiss-cpu
+
+# Notebook
+jupyter
