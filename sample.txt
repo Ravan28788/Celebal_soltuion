@@ -1,0 +1,36 @@
+Retrieval-Augmented Generation, or RAG, is a technique that combines information
+retrieval with text generation. Instead of relying only on what a language model
+learned during training, a RAG system first searches a knowledge base for relevant
+information and then uses that information to generate an answer. This makes the
+answers more accurate and lets the model work with private or up-to-date data that
+it was never trained on.
+
+The RAG pipeline usually has four main stages. First, documents are ingested and
+converted into raw text. Second, that text is split into smaller chunks so that
+retrieval can be more precise. Third, each chunk is converted into a vector
+embedding, a list of numbers that captures its meaning. Fourth, these embeddings
+are stored in a vector database that supports fast similarity search.
+
+When a user asks a question, the system converts the question into an embedding
+using the same embedding model. It then searches the vector database for the
+chunks whose embeddings are most similar to the question's embedding. These
+chunks are called the retrieved context.
+
+Finally, the retrieved context is passed to a language model along with the
+original question. The language model reads the context and generates an answer
+that is grounded in the retrieved information rather than purely in its own
+memorized knowledge. This step is called augmented generation, because the
+model's generation process is "augmented" with external context.
+
+RAG systems are useful for building chatbots that can answer questions about a
+company's internal documents, customer support systems that need to reference
+product manuals, and research assistants that need to cite specific papers.
+Compared to fine-tuning a model on new data, RAG is cheaper, faster to update,
+and less prone to hallucination because the model can point to the exact source
+text it used to form its answer.
+
+One common improvement to a basic RAG system is hybrid search, which combines
+keyword-based search (like BM25) with vector similarity search. Another common
+improvement is re-ranking, where a second, more expensive model re-scores the
+top retrieved chunks to push the most relevant ones to the top before they are
+sent to the language model.
